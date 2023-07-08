@@ -1,0 +1,24 @@
+👋Hey connections!!
+
+In This post I'm sharing about HDFS and HDFS Architecture,how it works ?
+
+HDFS - HDFS Stands for Hadoop Distributed File System . Hadoop is a dataframe which is used to solve the problem related to the data.
+HDFS is a on-premise datalake.
+
+let us suppose you have a four nodes of Hadoop cluster(N1,N2,N3,N4).
+consider you have a 500 mb file.Assume that it is very big file .so if you want to store the file.Let say that entire file goes to one node(file 1). Storing whole file in one node is not good se we will be dividing the file into Four clusters.
+
+BLOCK SIZE :- 128 MB is the block size. Block is the portion of the data.If someone wants to read the file1 how do you know what is kept where For this Master node is required .Master node is the name node .
+
+Data nodes holds the actual data.
+Name node holds the metadata table.
+
+⭐What if one node goes do we lose the data? In this case there is a concept of REPLICATION FACTOR - The default replication factor in HDFS is 3. This means that every block will have two more copies of it, each stored on separate DataNodes in the cluster.
+
+⭐how does the namenode knows that the datanode is dead?
+Data node can go down because it's a cheap hardware for this there is a concept of HEARTBEAT(every data nodes sends a heartbeat to the namenode in every 3 seconds which indicates that it is alive.
+
+⭐What if the namenode fails? for this there is a concept of secondary namenode.although the chance of the namenode failing is little less,In case if it happens Secondary namenode is a replacement of the failed namenode.
+
+⭐Why is the block size is 128 mb?
+As if you reduce the size of the block , the number of the blocks becomes more. and if you increase the size of the block, the number of blocks becomes less.
